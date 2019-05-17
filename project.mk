@@ -42,7 +42,7 @@ all: ${CREATE_DIRS} ${HEADER_DEPS} ${STATIC_LIBS} ${SHARED_LIBS} ${EXES} ${CREAT
 
 clean:
 	${QQ}${RMDIR} ${OUTDIR}
-	${QQ}${RM_F} ${UNITTESTS_MAIN}
+	${QQ}if [ -n "${UNITTESTS_MAIN}" ] ; then ${RM_F} ${UNITTESTS_MAIN}; fi
 
 $(foreach d, ${CREATE_DIRS}, $(eval $(call DIRDEP, ${d})))
 
