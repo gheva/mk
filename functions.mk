@@ -128,7 +128,7 @@ endef
 define EXE_TARGET
 $(call EXE_NAME, ${1}): ${$(strip ${1})_DEPS} $(call STATC_LIB_EXE_DEPS, ${1})
 	$(call MESSAGE, Linking executable $$@)
-	${QQ}${CXX} ${CXXFLAGS} ${CFLAGS} ${LDFLAGS} -o $$@ ${$(strip ${1})_LINK_OBJS} $(call LINK_LIBS, ${$(strip ${1})_MODULES})
+	${QQ}${CXX} ${CXXFLAGS} ${CFLAGS} ${LDFLAGS} -o $$@ ${$(strip ${1})_LINK_OBJS} $(call LINK_LIBS, ${$(strip ${1})_MODULES}) ${LDFLAGS}
 endef
 
 define ADD_EXE
