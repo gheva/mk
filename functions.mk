@@ -126,9 +126,9 @@ define MESSAGE
 endef
 
 define EXE_TARGET
-$(call EXE_NAME, ${1}): ${$(strip ${1})_DEPS} $(call STATC_LIB_EXE_DEPS, ${1})
+$(call EXE_NAME, ${1}): ${$(strip ${1})_DEPS} $(call STATC_LIB_EXE_DEPS, ${1}) ${$(strip ${1})_EXTRAS}
 	$(call MESSAGE, Linking executable $$@)
-	${QQ}${CXX} ${CXXFLAGS} ${CFLAGS} ${LDFLAGS} -o $$@ ${$(strip ${1})_LINK_OBJS} $(call LINK_LIBS, ${$(strip ${1})_MODULES}) ${LDFLAGS}
+	${QQ}${CXX} ${CXXFLAGS} ${CFLAGS} ${LDFLAGS} -o $$@ ${$(strip ${1})_LINK_OBJS} ${$(strip ${1})_EXTRAS}$(call LINK_LIBS, ${$(strip ${1})_MODULES}) ${LDFLAGS}
 endef
 
 define ADD_EXE
@@ -140,6 +140,11 @@ DIR_SUBDIRS :=
 DIR_EXPORT_HEADERS :=
 DIR_OBJS :=
 DIR_EXES :=
+endef
+
+define ADD_GTEST_FILE
+gtest_obj :=  $(call OBJ_NAME, ${DIR}, ${1})
+unittests_EXTRAS += ${gtest_obj}
 endef
 
 # vim: set noexpandtab :

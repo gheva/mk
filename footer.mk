@@ -16,6 +16,9 @@ $(foreach e, ${DIR_EXES}, $(eval $(call EXE_COMPILE_FLAGS, ${e}, ${DIR}, ${DIR_C
 DIR_COMPILATION_FLAGS :=
 endif
 
+# Add unittest files
+$(foreach t, ${DIR_GTEST_OBJS}, $(eval $(call ADD_GTEST_FILE, ${t})))
+
 # Go into the sibdirectories and build them
 $(foreach d, ${DIR_SUBDIRS}, $(eval $(call ADD_DIR_SUBDIR, ${DIR}, ${d})))
 
