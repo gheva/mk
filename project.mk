@@ -22,6 +22,9 @@ HEADERS :=
 CXXFLAGS += -I${SRCDIR}
 LDFLAGS += -L${LIBDIR}
 
+.PHONY: all
+all: buil_all
+
 # Start from the source directory and traverse down
 include $(strip ${SRCDIR})/build.mk
 
@@ -37,8 +40,8 @@ $(foreach m, ${SHARED_MODULES}, $(eval $(call SHARED_LIB_DEP, ${m})))
 
 $(foreach e, ${EXECUTABLES}, $(eval $(call EXE_DEP, ${e})))
 
-.PHONY: all
-all: ${CREATE_DIRS} ${HEADER_DEPS} ${STATIC_LIBS} ${SHARED_LIBS} ${EXES} ${CREATE_DIRS}
+.PHONY: buil_all
+buil_all: ${CREATE_DIRS} ${HEADER_DEPS} ${STATIC_LIBS} ${SHARED_LIBS} ${EXES} ${CREATE_DIRS}
 
 clean:
 	${QQ}${RMDIR} ${OUTDIR}
