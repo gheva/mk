@@ -17,7 +17,7 @@ ${OUTDIR}/%.$(strip ${OBJ_SFX}):${SRCDIR}%.cpp
 	${QQ}ar cr $@ $^
 
 # Copy exported headers
-${OUTDIR}/%.h:${SRCDIR}%.h
+$(strip ${INCLUDIR})/%.h:${SRCDIR}%.h
 	$(call MESSAGE, Copying header $@)
 	${QQ}cp $< $@
 

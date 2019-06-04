@@ -22,11 +22,12 @@ endef
 # Adds the header to the list of exported headers
 define ADD_HEADER
 HEADERS += $(strip ${1})/$(strip ${2}).h
+CREATE_DIRS += $(dir $(strip ${INCLUDIR})/$(strip ${1})/$(strip ${2}).h)
 endef
 
 # Adds the name of the header destination to the list of depndent files
 define HEADER_DEP
-HEADER_DEPS += $(strip ${OUTDIR})/$(strip ${1})
+HEADER_DEPS += $(strip ${INCLUDIR})/$(strip ${1})
 endef
 
 # Target to create a directory

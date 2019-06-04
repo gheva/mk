@@ -16,7 +16,8 @@ EXES :=
 OBJS :=
 LIBDIR := $(strip ${OUTDIR})/$(strip ${LIBDIR})
 EXEDIR := $(strip ${OUTDIR})/$(strip ${EXEDIR})
-CREATE_DIRS := ${OUTDIR} ${LIBDIR} ${EXEDIR}
+INCLUDIR := $(strip ${OUTDIR})/$(strip ${INCLUDIR})
+CREATE_DIRS := ${OUTDIR} ${LIBDIR} ${EXEDIR} ${INCLUDIR}
 HEADERS :=
 
 CXXFLAGS += -I${SRCDIR}
