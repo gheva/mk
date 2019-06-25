@@ -9,7 +9,7 @@ ${OUTDIR}/%.$(strip ${OBJ_SFX}):${SRCDIR}%.cpp
 # Link shared libraries
 %.$(strip ${SHARED_SFX}):
 	$(call MESSAGE, Linking shared $@)
-	${QQ}$(CXX) $(CXXFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ -Wl,${ADD_ARCHIVE_FLAG} $^
+	${QQ}$(CXX) $(CXXFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ -Wl,${ADD_ARCHIVE_FLAG} $^ $($(strip $(basename $(notdir $@)))_FLAGS)
 
 # Link static libraries
 %.$(strip ${STATIC_SFX}):
