@@ -48,7 +48,7 @@ clean:
 	${QQ}${RMDIR} ${OUTDIR}
 	${QQ}if [ -n "${UNITTESTS_MAIN}" ] ; then ${RM_F} ${UNITTESTS_MAIN}; fi
 
-$(foreach d, ${CREATE_DIRS}, $(eval $(call DIRDEP, ${d})))
+$(foreach d, $(sort ${CREATE_DIRS}), $(eval $(call DIRDEP, ${d})))
 
 $(foreach m, ${STATIC_MODULES}, $(eval $(call STATIC_LIB_TARGET, ${m})))
 
